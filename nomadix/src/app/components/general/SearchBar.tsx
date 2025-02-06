@@ -3,20 +3,20 @@
 import Image from "next/image";
 const SearchBar = () => {
   return (
-    <div style={{border: "1px solid black"}} className="w-full md:w-auto py-2 rounded-full shadow-md hover:shadow-xl transition">
+    <div style={{border: "1px solid #ddd"}} className="w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition">
       <div className="flex flex-row items-center justify-between">
-        <div className="text-sm text-white cursor-pointer font-medium pl-4 pr-3">Anywhere</div>
-        <div style={{borderRight: "1px solid black", borderLeft: "1px solid black"}} 
-        className="hidden cursor-pointer sm:block text-sm text-white font-medium px-3 flex-1 text-center">
+        <div className="text-sm cursor-pointer font-medium pl-4 pr-3">Anywhere</div>
+        <div style={{borderRight: "1px solid #ddd", borderLeft: "1px solid #ddd"}} 
+        className="hidden cursor-pointer sm:block text-sm font-medium px-3 flex-1 text-center">
           Any Week
         </div>
 
         <div
           className="
-        text-sm pl-3 pr-2 text-white flex flex-row items-center gap-3"
+        text-sm pl-3 pr-2 text-neutral-600 flex flex-row items-center gap-3"
         >
           <div className="hidden cursor-pointer sm:block">Add Guests</div>
-          <div className="p-2 cursor-pointer bg-[#06D6A0] w-[75%] sm:w-[25%] rounded-full text-white">
+          <div className="p-2 cursor-pointer bg-[#25D1D1] w-[75%] sm:w-[25%] rounded-full text-white">
             <Image
               alt="search"
               src="/assets/icons/search.svg"

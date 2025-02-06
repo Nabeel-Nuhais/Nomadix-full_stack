@@ -15,7 +15,7 @@ const Logo = () => {
           src="/assets/icons/logo.svg"
         />
       </div>
-      <h1 className="hidden md:block text-[#06D6A0] leading-none text-2xl font-semibold">
+      <h1 className="hidden md:block text-[#25D1D1] leading-none text-2xl font-semibold">
         nomadix
       </h1>
     </div>

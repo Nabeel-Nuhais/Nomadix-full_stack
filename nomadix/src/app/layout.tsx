@@ -22,7 +22,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body style={{
-         backgroundImage: "url('assets/images/spotlight-one.jpg')", 
+         backgroundImage: "url('assets/images/spotlight.jpg')", 
          backgroundSize: "cover", // Ensures the image covers the div
          backgroundPosition: "center", // Centers the image
          backgroundRepeat: "no-repeat", // Prevents repeating

@@ -18,19 +18,16 @@ const UserMenu = () => {
         <div
           onClick={() => {}}
           className="
-            hidden md:block text-white text-base bg-transparent font-semibold py-2 px-3 rounded-full hover:bg-[#06D6A0] transition cursor-pointer"
+            hidden md:block text-base bg-transparent font-semibold py-2 px-3 rounded-full hover:bg-[#25D1D1] hover:text-white transition cursor-pointer"
         >
           Post your space
         </div>
         <div
           onClick={toggleOpen}
-          style={{ border: "1px solid #1E1A1A" }}
-          className="p-4 md:py-1 md:px-2 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-xl transition"
+          style={{ border: "1px solid #ddd" }}
+          className="p-4 md:py-1 md:px-2 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition"
         >
-          <div className="text-white">
-
           <AiOutlineMenu />
-          </div>
           <div className="hidden md:block ">
             <Avatar />
           </div>
@@ -39,8 +36,8 @@ const UserMenu = () => {
 
       {isOpen && (
         <div
-          style={{ border: "1px solid #f6f6f6"  }}
-          className="absolute rounded-xl w-[40vw] shadow-lg md:w-3/4 bg-white right-0 top-12 text-sm"
+          style={{ border: "1px solid #ddd" }}
+          className="absolute rounded-xl w-[40vw] shadow-md md:w-3/4 bg-white right-0 top-12 text-sm"
         >
           <div className="flex flex-col cursor-pointer">
             <MenuItem onClick={() => {}} label="Login" />

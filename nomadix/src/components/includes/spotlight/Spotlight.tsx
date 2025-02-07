@@ -16,7 +16,8 @@ const Spotlight = () => {
           </h1>
           <p className="text-base md:text-lg font-normal pb-10 pt-2.5 w-fit">
             Explore unique stays in remote villages, countryside retreats, and
-            traditional nomadic homes. Experience the beauty of off-the-grid living!
+            traditional nomadic homes. Experience the beauty of off-the-grid
+            living!
           </p>
           <div className="flex flex-col items-center md:flex-row md:items-center gap-2 w-fit">
             <p className="text-base md:text-lg">

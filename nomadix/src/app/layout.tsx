@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import Navbar from "./components/includes/navbar/Navbar";
-import Spotlight from "./components/includes/spotlight/Spotlight";
+import "../styles/globals.css";
+import Navbar from "../components/includes/navbar/Navbar";
+import Spotlight from "../components/includes/spotlight/Spotlight";
+import RegisterModal from "@/components/modals/RegisterModal";
 
 export const metadata = {
   title: "Nomadix",
@@ -21,13 +22,16 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body style={{
-         backgroundImage: "url('assets/images/spotlight.jpg')", 
-         backgroundSize: "cover", // Ensures the image covers the div
-         backgroundPosition: "center", // Centers the image
-         backgroundRepeat: "no-repeat", // Prevents repeating
-         borderRadius: "10px", // Optional: adds rounded corners
-      }} className="flex flex-col min-h-screen">
+      <body
+        style={{
+          backgroundImage: "url('assets/images/spotlight.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+        className="flex flex-col min-h-screen"
+      >
+        <RegisterModal />
         <Navbar />
         <div className="">{children}</div>
         <Spotlight />

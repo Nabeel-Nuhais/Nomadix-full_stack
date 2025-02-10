@@ -3,11 +3,21 @@
 import Image from "next/image";
 const SearchBar = () => {
   return (
-    <div style={{border: "1px solid #ddd"}} className="w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition">
+    <div
+      style={{ border: "1px solid #ddd" }}
+      className="w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition"
+    >
       <div className="flex flex-row items-center justify-between">
-        <div className="text-sm cursor-pointer font-medium pl-4 pr-3">Anywhere</div>
-        <div style={{borderRight: "1px solid #ddd", borderLeft: "1px solid #ddd"}} 
-        className="hidden cursor-pointer sm:block text-sm font-medium px-3 flex-1 text-center">
+        <div className="text-sm cursor-pointer font-medium pl-4 pr-3">
+          Anywhere
+        </div>
+        <div
+          style={{
+            borderRight: "1px solid #ddd",
+            borderLeft: "1px solid #ddd",
+          }}
+          className="hidden cursor-pointer sm:block text-sm font-medium px-3 flex-1 text-center"
+        >
           Any Week
         </div>
 

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import Button from "../general/Button";
+import Button from "../general/buttons/Button";
 
 interface ModalProps {
   isOpen?: boolean;
@@ -150,7 +150,7 @@ const Modal: React.FC<ModalProps> = ({
                     left-9
                   "
                 >
-                  <div className="">
+                  <div className="rounded-full hover:bg-neutral-100">
                     <Image
                       src="assets/icons/close.svg"
                       height={0}
@@ -188,6 +188,7 @@ const Modal: React.FC<ModalProps> = ({
                     label={actionLabel!}
                   />
                 </div>
+                {footer}
               </div>
             </div>
           </div>

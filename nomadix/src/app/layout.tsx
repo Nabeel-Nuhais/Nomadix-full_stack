@@ -3,6 +3,7 @@ import "../styles/globals.css";
 import Navbar from "../components/includes/navbar/Navbar";
 import Spotlight from "../components/includes/spotlight/Spotlight";
 import RegisterModal from "@/components/modals/RegisterModal";
+import ToasterProvider from "@/providers/ToasterProvider";
 
 export const metadata = {
   title: "Nomadix",
@@ -31,6 +32,7 @@ export default function RootLayout({
         }}
         className="flex flex-col min-h-screen"
       >
+        <ToasterProvider />
         <RegisterModal />
         <Navbar />
         <div className="">{children}</div>

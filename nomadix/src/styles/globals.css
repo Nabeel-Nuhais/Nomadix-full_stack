@@ -15,32 +15,36 @@
 }
 
 @font-face {
-  font-family: 'GT-Eesti';
-  src: url("../../public/assets/fonts/GT-Eesti-Pro-Text-Light.woff") format("woff");
+  font-family: "GT-Eesti";
+  src: url("../../public/assets/fonts/GT-Eesti-Pro-Text-Light.woff")
+    format("woff");
   font-weight: 400;
-  font-style: normal
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'GT-Eesti';
-  
-  src: url("../../public/assets/fonts/GT-Eesti-Pro-Text-Regular.woff") format("woff");
+  font-family: "GT-Eesti";
+
+  src: url("../../public/assets/fonts/GT-Eesti-Pro-Text-Regular.woff")
+    format("woff");
   font-weight: 500;
-  font-style: normal
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'GT-Eesti';
-  src: url("../../public/assets/fonts/GT-Eesti-Pro-Text-Medium.woff") format("woff");
+  font-family: "GT-Eesti";
+  src: url("../../public/assets/fonts/GT-Eesti-Pro-Text-Medium.woff")
+    format("woff");
   font-weight: 600;
-  font-style: normal
+  font-style: normal;
 }
 
 @font-face {
-  font-family: 'GT-Eesti';
-  src: url("../../public/assets/fonts/GT-Eesti-Pro-Text-Bold.woff") format("woff");
+  font-family: "GT-Eesti";
+  src: url("../../public/assets/fonts/GT-Eesti-Pro-Text-Bold.woff")
+    format("woff");
   font-weight: 700;
-  font-style: normal
+  font-style: normal;
 }
 
 * {

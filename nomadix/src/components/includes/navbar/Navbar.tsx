@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import Container from "../../general/Container";
+import Container from "../../general/wrapper/Container";
 import Logo from "./Logo";
-import SearchBar from "../../general/SearchBar";
+import SearchBar from "../../general/searchBars/SearchBar";
 import UserMenu from "./UserMenu";
 
 const Navbar = () => {

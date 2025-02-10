@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "../../general/Container";
+import Container from "../../general/wrapper/Container";
 import Image from "next/image";
 
 const Spotlight = () => {

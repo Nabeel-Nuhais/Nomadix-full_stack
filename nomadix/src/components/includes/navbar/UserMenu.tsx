@@ -1,24 +1,19 @@
 "use client";
 
 import { AiOutlineMenu } from "react-icons/ai";
-import Avatar from "../../general/Avatar";
-import { useCallback, useEffect, useState } from "react";
+import Avatar from "../../general/avatar/Avatar";
+import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import { motion, AnimatePresence } from "framer-motion";
+import useRegisterModal from "@/hooks/useRegisterModal";
 
 const UserMenu = () => {
+  const registerModal = useRegisterModal();
   const [isOpen, setIsOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const toggleOpen = useCallback(() => {
     setIsOpen((prev) => !prev);
   }, []);
-
-  if (!isMounted) return null; // Prevents hydration mismatch
 
   return (
     <div className="relative">
@@ -54,7 +49,7 @@ const UserMenu = () => {
           >
             <div className="flex flex-col cursor-pointer">
               <MenuItem onClick={() => {}} label="Login" />
-              <MenuItem onClick={() => {}} label="Sign up" />
+              <MenuItem onClick={registerModal.onOpen} label="Sign up" />
             </div>
           </motion.div>
         )}

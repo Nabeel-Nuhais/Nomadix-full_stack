@@ -6,9 +6,11 @@ import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import { motion, AnimatePresence } from "framer-motion";
 import useRegisterModal from "@/hooks/useRegisterModal";
+import useLoginModal from "@/hooks/useLoginModal";
 
 const UserMenu = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {
@@ -48,7 +50,7 @@ const UserMenu = () => {
             className="absolute rounded-xl w-[40vw] shadow-md md:w-3/4 bg-white right-0 top-12 text-sm"
           >
             <div className="flex flex-col cursor-pointer">
-              <MenuItem onClick={() => {}} label="Login" />
+              <MenuItem onClick={loginModal.onOpen} label="Login" />
               <MenuItem onClick={registerModal.onOpen} label="Sign up" />
             </div>
           </motion.div>

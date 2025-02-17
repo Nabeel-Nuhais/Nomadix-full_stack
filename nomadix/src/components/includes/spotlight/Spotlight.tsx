@@ -6,8 +6,15 @@ import Image from "next/image";
 const Spotlight = () => {
   return (
     <div
+      style={{
+        height: "calc(100vh - 82px)",
+        margin: "auto 0 0",
+        backgroundImage: "url('assets/images/spotlight.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
       className="pt-6"
-      style={{ height: "calc(100vh - 82px)", margin: "auto 0 0" }}
     >
       <Container>
         <div style={{}} className="xl:pt-20 md:pt-10 sm:pt-4 pt-2">

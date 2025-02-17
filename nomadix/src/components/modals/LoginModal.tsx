@@ -6,14 +6,14 @@ import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import useRegisterModal from "@/hooks/useRegisterModal";
+import useLoginModal from "@/hooks/useLoginModal";
 import Modal from "./Modal";
 import Heading from "../general/headings/Heading";
 import Input from "../general/inputs/input";
 import toast from "react-hot-toast";
 import Button from "../general/buttons/Button";
-import useLoginModal from "@/hooks/useLoginModal";
 
-const RegisterModal = () => {
+const LoginModal = () => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +24,6 @@ const RegisterModal = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: "",
       email: "",
       password: "",
     },
@@ -49,18 +48,10 @@ const RegisterModal = () => {
   const bodyContent = (
     <>
       <div className="flex flex-col gap-4">
-        <Heading title="Welcome to Nomadix" subtitle="Create an account!" />
+        <Heading title="Welcome back" subtitle="Login to your account" />
         <Input
           id="email"
           label="Email"
-          disabled={isLoading}
-          register={register}
-          errors={errors}
-          required
-        />
-        <Input
-          id="name"
-          label="Name"
           disabled={isLoading}
           register={register}
           errors={errors}
@@ -106,15 +97,15 @@ const RegisterModal = () => {
             font-light"
         >
           <div className="justify-center flex flex-row items-center gap-2">
-            <div className="">Already have an account?</div>
+            <div className="">Don't have an account?</div>
             <div
               onClick={() => {
-                registerModal.onClose();
-                loginModal.onOpen();
+                loginModal.onClose();
+                registerModal.onOpen();
               }}
               className="text-neutral-800 cursor-pointer hover:underline"
             >
-              Log in
+              Register
             </div>
           </div>
         </div>
@@ -126,10 +117,10 @@ const RegisterModal = () => {
     <>
       <Modal
         disabled={isLoading}
-        isOpen={registerModal.isOpen}
-        title="Register"
+        isOpen={loginModal.isOpen}
+        title="Login"
         actionLabel="Continue"
-        onClose={registerModal.onClose}
+        onClose={loginModal.onClose}
         onSubmit={handleSubmit(onSubmit)}
         body={bodyContent}
         footer={footerContent}
@@ -138,4 +129,4 @@ const RegisterModal = () => {
   );
 };
 
-export default RegisterModal;
+export default LoginModal;

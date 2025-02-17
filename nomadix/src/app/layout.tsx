@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 import Navbar from "../components/includes/navbar/Navbar";
 import Spotlight from "../components/includes/spotlight/Spotlight";
-import RegisterModal from "@/components/modals/RegisterModal";
 import ToasterProvider from "@/providers/ToasterProvider";
+import RegisterModal from "@/components/modals/RegisterModal";
+import LoginModal from "@/components/modals/LoginModal";
 
 export const metadata = {
   title: "Nomadix",
@@ -23,17 +24,10 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body
-        style={{
-          backgroundImage: "url('assets/images/spotlight.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-        className="flex flex-col min-h-screen"
-      >
+      <body className="flex flex-col min-h-screen">
         <ToasterProvider />
         <RegisterModal />
+        <LoginModal />
         <Navbar />
         <div className="">{children}</div>
         <Spotlight />

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import Button from "../general/buttons/Button";
+import Button from "../general/Button";
 
 interface ModalProps {
   isOpen?: boolean;

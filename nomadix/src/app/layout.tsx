@@ -26,11 +26,10 @@ export default function RootLayout({
       </head>
       <body className="flex flex-col min-h-screen">
         <ToasterProvider />
+        <Navbar />
         <RegisterModal />
         <LoginModal />
-        <Navbar />
-        <div className="">{children}</div>
-        <Spotlight />
+        <div className="pt-[82px] flex-grow">{children}</div>
       </body>
     </html>
   );

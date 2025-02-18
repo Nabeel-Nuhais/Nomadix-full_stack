@@ -35,7 +35,8 @@ const Button: React.FC<ButtonProps> = ({
         w-full
         ${outline ? "bg-white" : "bg-[#25D1D1]"}
         ${outline ? "text-black" : "text-white"}
-        ${outline ? "hover:text-white" : "hover:text-white"}
+        ${outline ? "hover:text-black" : "hover:text-white"}
+        ${outline ? "hover:bg-[#f0f0f0]" : "hover:text-white"}
         ${small ? "text-sm" : "text-md"}
         ${small ? "py-1" : "py-3"}
         ${small ? "font-light" : "font-semibold"}

@@ -1,7 +1,7 @@
 "use client";
 
 import { AiOutlineMenu } from "react-icons/ai";
-import Avatar from "../../general/avatar/Avatar";
+import Avatar from "../../general/Avatar";
 import { useCallback, useState } from "react";
 import MenuItem from "./MenuItem";
 import { motion, AnimatePresence } from "framer-motion";
@@ -20,11 +20,13 @@ const UserMenu = () => {
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
-        <div
-          onClick={() => {}}
-          className="hidden md:block text-base bg-transparent font-semibold py-2 px-3 rounded-full hover:bg-[#25D1D1] hover:text-white transition cursor-pointer"
-        >
-          Post your space
+        <div className="">
+          <button
+            onClick={() => {}}
+            className="hidden md:block text-base bg-transparent font-semibold py-2 px-3 rounded-full hover:bg-[#25D1D1] hover:text-white transition cursor-pointer"
+          >
+            Post your space
+          </button>
         </div>
         <div
           onClick={toggleOpen}
@@ -46,12 +48,23 @@ const UserMenu = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -5 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            style={{ border: "1px solid #ddd" }}
+            // style={{ border: "1px solid #ddd" }}
             className="absolute rounded-xl w-[40vw] shadow-md md:w-3/4 bg-white right-0 top-12 text-sm"
           >
             <div className="flex flex-col cursor-pointer">
-              <MenuItem onClick={loginModal.onOpen} label="Login" />
-              <MenuItem onClick={registerModal.onOpen} label="Sign up" />
+              {/* <>
+                  <MenuItem onClick={() => {}} label="My trips" />
+                  <MenuItem onClick={() => {}} label="My favorites" />
+                  <MenuItem onClick={() => {}} label="My reservation" />
+                  <MenuItem onClick={() => {}} label="My properties" />
+                  <MenuItem onClick={() => {}} label="Post my space" />
+                  <hr />
+                  <MenuItem onClick={() => {}} label="Logout" />
+                </> */}
+              <>
+                <MenuItem onClick={loginModal.onOpen} label="Login" />
+                <MenuItem onClick={registerModal.onOpen} label="Sign up" />
+              </>
             </div>
           </motion.div>
         )}

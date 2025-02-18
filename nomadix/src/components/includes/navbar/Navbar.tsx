@@ -1,23 +1,19 @@
 "use client";
 
-import Container from "../../general/wrapper/Container";
+import Container from "../../general/Container";
 import Logo from "./Logo";
-import SearchBar from "../../general/searchBars/SearchBar";
+import SearchBar from "../../general/SearchBar";
 import UserMenu from "./UserMenu";
 
-interface NavbarProps {
-  currentUser?: User | null;
-}
-
-const Navbar: React.FC<NavbarProps> = ({currentUser}) => {
+const Navbar = () => {
   return (
-    <div className="fixed w-full bg-transparent z-10 shadow-sm h-[82px]">
+    <div className="fixed w-full bg-white z-10 shadow-sm h-[82px]">
       <div className="py-4" style={{ borderBottom: "1px solid #f6f6f6" }}>
         <Container>
           <div className="flex flex-row items-center justify-between gap-3 md:gap-0">
             <Logo />
             <SearchBar />
-            <UserMenu currentUser={currentUser} />
+            <UserMenu />
           </div>
         </Container>
       </div>

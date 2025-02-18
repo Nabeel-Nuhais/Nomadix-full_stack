@@ -1,16 +1,16 @@
 "use client";
 
-import Container from "../../general/wrapper/Container";
+import Container from "../../general/Container";
 import Image from "next/image";
 
-const Spotlight = () => {
+const Spotlight = ({ onArrowClick }: { onArrowClick: () => void }) => {
   return (
     <div
       style={{
         height: "calc(100vh - 82px)",
         margin: "auto 0 0",
         backgroundImage: "url('assets/images/spotlight.jpg')",
-        backgroundSize: "cover",
+        backgroundSize: "1700px",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
@@ -31,6 +31,7 @@ const Spotlight = () => {
               Discover millions of houses and rooms for rent.
             </p>
             <button
+              onClick={onArrowClick}
               style={{ border: "1px solid #ddd" }}
               className="rounded-full shadow hover:shadow-lg cursor-pointer transition w-fit"
             >

@@ -1,10 +1,15 @@
 "use client";
 
 import axios from "axios";
-import { AiFillGithub } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
+
+// import { AiFillGithub } from "react-icons/ai";
+// import { FcGoogle } from "react-icons/fc";
+
 import { useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+
 import useRegisterModal from "@/hooks/useRegisterModal";
 import Modal from "./Modal";
 import Heading from "../general/Heading";
@@ -14,6 +19,8 @@ import Button from "../general/Button";
 import useLoginModal from "@/hooks/useLoginModal";
 
 const RegisterModal = () => {
+  const router = useRouter();
+
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +41,7 @@ const RegisterModal = () => {
     setIsLoading(true);
 
     axios
-      .post("/api/register", data)
+      .post("/api/auth/register/", data)
       .then(() => {
         registerModal.onClose();
       })
@@ -42,6 +49,7 @@ const RegisterModal = () => {
         toast.error("Something went wrong");
       })
       .finally(() => {
+        console.log(data);
         setIsLoading(false);
       });
   };
@@ -82,12 +90,12 @@ const RegisterModal = () => {
   const footerContent = (
     <>
       <div className="flex flex-col gap-4 mt-3">
-        <div className="flex flex-row items-center text-neutral-300 gap-3">
-          <hr className="border w-full border-solid" />
+        <div className="flex border w-full border-solid flex-row items-center text-neutral-300 gap-3">
+          {/* <hr className="border w-full border-solid" />
           <span className="text-sm">or</span>
-          <hr className="border w-full border-solid" />
+          <hr className="border w-full border-solid" /> */}
         </div>
-        <Button
+        {/* <Button
           outline
           label="Continue with Google"
           icon={FcGoogle}
@@ -98,7 +106,7 @@ const RegisterModal = () => {
           label="Continue with Github"
           icon={AiFillGithub}
           onClick={() => {}}
-        />
+        /> */}
         <div
           className="text-neutral-500
             text-center

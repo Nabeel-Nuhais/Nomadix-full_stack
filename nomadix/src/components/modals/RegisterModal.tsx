@@ -10,6 +10,8 @@ import Input from "../general/Input";
 import Button from "../general/Button";
 import apiService from "@/services/apiService";
 import toast from "react-hot-toast";
+import { handleLogin } from "@/lib/actions";
+import { useAuth } from "@/context/AuthContext";
 
 const RegisterModal = () => {
   const router = useRouter();
@@ -19,72 +21,111 @@ const RegisterModal = () => {
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
-  const [errors, setErrors] = useState<string[]>([]);
-
+  const [errors, setErrors] = useState<{
+    email?: string;
+    password1?: string;
+    password2?: string;
+    non_field_errors?: string[];
+  }>({});
   const [isLoading, setIsLoading] = useState(false);
 
+  const { refreshUser } = useAuth(); // useAuth to refresh user state
+
   const submitSignup = async () => {
-    const formData = {
-      email: email,
-      password1: password1,
-      password2: password2,
-    };
+    setIsLoading(true);
+    setErrors({});
 
-    const response = await apiService.post(
-      "/api/auth/register/",
-      JSON.stringify(formData)
-    );
+    const formData = { email, password1, password2 };
 
-    if (response.access) {
-      // handlelogin
+    try {
+      const response = await apiService.post(
+        "/api/auth/register/",
+        JSON.stringify(formData)
+      );
 
-      registerModal.onClose();
+      if (response.access) {
+        handleLogin(response.user.pk, response.access, response.refresh);
+        await refreshUser(); // Refresh user state to update UI immediately
 
-      router.push("/");
-    } else {
-      const tmpErrors: string[] = Object.values(response).map((error: any) => {
-        return error;
-      });
-
-      setErrors(tmpErrors);
+        toast.success("Account created successfully!");
+        registerModal.onClose();
+        router.push("/");
+      } else {
+        setErrors(response);
+        toast.error("Registration failed. Please check your inputs.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
+
+  const handleInputChange = (
+    setter: React.Dispatch<React.SetStateAction<string>>,
+    value: string,
+    field: keyof typeof errors
+  ) => {
+    setter(value);
+
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[field]; // Remove error properly
+      return newErrors;
+    });
+  };
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title="Welcome to Nomadix" subtitle="Create an account!" />
+
       <Input
         id="email"
         label="Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => handleInputChange(setEmail, e.target.value, "email")}
         disabled={isLoading}
         required
       />
+      {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+
       <Input
         id="password1"
         label="Password"
         type="password"
         value={password1}
-        onChange={(e) => setPassword1(e.target.value)}
+        onChange={(e) =>
+          handleInputChange(setPassword1, e.target.value, "password1")
+        }
         disabled={isLoading}
         required
       />
+      {errors.password1 && (
+        <p className="text-red-500 text-sm">{errors.password1}</p>
+      )}
+
       <Input
         id="password2"
         label="Confirm Password"
         type="password"
         value={password2}
-        onChange={(e) => setPassword2(e.target.value)}
+        onChange={(e) =>
+          handleInputChange(setPassword2, e.target.value, "password2")
+        }
         disabled={isLoading}
         required
       />
-      {errors.map((error, index) => {
-        return (
-          <div key={`error_${index}`} className="p-4 bg-red-600 text-white rounded-xl opacity-80">
-            {error}
-          </div>
-        );
-      })}
+      {errors.password2 && (
+        <p className="text-red-500 text-sm">{errors.password2}</p>
+      )}
+
+      {/* Display non-field errors (e.g., password mismatch) */}
+      {errors.non_field_errors &&
+        errors.non_field_errors.map((err, i) => (
+          <p key={i} className="text-red-500 text-sm">
+            {err}
+          </p>
+        ))}
     </div>
   );
 

@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 import Navbar from "../components/includes/navbar/Navbar";
 import Spotlight from "../components/includes/spotlight/Spotlight";
+
 import ToasterProvider from "@/providers/ToasterProvider";
+import { AuthProvider } from "@/context/AuthContext";
+
 import RegisterModal from "@/components/modals/RegisterModal";
 import LoginModal from "@/components/modals/LoginModal";
 
@@ -20,17 +23,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-      </head>
-      <body className="flex flex-col min-h-screen">
-        <ToasterProvider />
-        <Navbar />
-        <RegisterModal />
-        <LoginModal />
-        <div className="pt-[82px] flex-grow">{children}</div>
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <head>
+          <link rel="icon" href="/favicon.ico" />
+        </head>
+        <body className="flex flex-col min-h-screen">
+          <ToasterProvider />
+          <Navbar />
+          <RegisterModal />
+          <LoginModal />
+          <div className="pt-[82px] flex-grow">{children}</div>
+        </body>
+      </html>
+    </AuthProvider>
   );
 }

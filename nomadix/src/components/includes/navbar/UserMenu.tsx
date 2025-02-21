@@ -8,7 +8,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
 
-const UserMenu = () => {
+import LogoutButton from "@/components/general/LogoutButton";
+
+interface UserMenuProps {
+  userId?: string | null;
+}
+
+const UserMenu: React.FC<UserMenuProps> = ({ userId }) => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
@@ -61,10 +67,14 @@ const UserMenu = () => {
                   <hr />
                   <MenuItem onClick={() => {}} label="Logout" />
                 </> */}
-              <>
-                <MenuItem onClick={loginModal.onOpen} label="Login" />
-                <MenuItem onClick={registerModal.onOpen} label="Sign up" />
-              </>
+              {userId ? (
+                <LogoutButton />
+              ) : (
+                <>
+                  <MenuItem onClick={loginModal.onOpen} label="Login" />
+                  <MenuItem onClick={registerModal.onOpen} label="Sign up" />
+                </>
+              )}
             </div>
           </motion.div>
         )}

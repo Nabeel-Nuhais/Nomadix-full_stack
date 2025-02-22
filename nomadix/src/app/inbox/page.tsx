@@ -1,11 +1,21 @@
-"use client"
+"use client";
 
-import Inbox from "./_components/Inbox";
+import Container from "@/components/general/Container";
+import Conversation from "@/components/includes/inbox/Conversation";
+import PropertyList from "@/components/includes/properties/PropertyList";
 
 const InboxPage = () => {
   return (
     <>
-      <Inbox />
+      <Container>
+        <div className="mt-10 space-y-4">
+          <h1 className="mb-4 text-2xl font-semibold">Page</h1>
+
+          <Conversation />
+          <Conversation />
+          <Conversation />
+        </div>
+      </Container>
     </>
   );
 };

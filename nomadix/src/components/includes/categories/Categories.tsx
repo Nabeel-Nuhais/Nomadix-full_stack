@@ -13,7 +13,7 @@ const Categories: React.FC<CategoriesProps> = ({
 }) => {
   return (
     <>
-      <div className="pt-3 cursor-pointer pb-6 flex items-center space-x-12">
+      <div className="pt-3 cursor-pointer flex items-center space-x-12">
         <div
           onClick={() => setCategory("Beach")}
           className={`pb-2 flex flex-col items-center space-y-2 opacity-60 hover:opacity-100 border-b-2 border-solid ${

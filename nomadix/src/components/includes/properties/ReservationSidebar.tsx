@@ -2,11 +2,20 @@
 
 import Button from "../../general/Button";
 
-const ReservationSidebar = () => {
+export type Property = {
+  id: string;
+  price_per_night: number;
+}
+
+interface ReservationSidebarProps {
+  property: Property;
+}
+
+const ReservationSidebar: React.FC<ReservationSidebarProps> = ({property}) => {
   return (
     <>
       <div className="p-6 col-span-2 rounded-xl border border-solid border-[#d5d5d5] shadow-md">
-        <h2 className="mb-5 text-lg">$200 per night</h2>
+        <h2 className="mb-5 text-lg">${property.price_per_night}</h2>
 
         <div className="mb-6 p-3 border border-solid border-[#d5d5d5] rounded-xl">
           <label htmlFor="" className="block font-medium text-sm mb-2">

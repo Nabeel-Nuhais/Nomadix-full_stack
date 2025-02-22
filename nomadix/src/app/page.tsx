@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import Spotlight from "@/components/includes/spotlight/Spotlight";
-import Categories from "../components/includes/categories/Categories";
+import Categories from "../components/includes/categories/Category";
 import PropertyList from "@/components/includes/properties/PropertyList";
 import Container from "../components/general/Container";
 

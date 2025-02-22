@@ -8,7 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
 
-import LogoutButton from "@/components/general/LogoutButton";
+import LogoutButton from "@/components/includes/navbar/LogoutButton";
+import PostSpaceButton from "./PostSpaceButton";
 
 interface UserMenuProps {
   userId?: string | null;
@@ -27,12 +28,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ userId }) => {
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div className="">
-          <button
-            onClick={() => {}}
-            className="hidden md:block text-base bg-transparent font-semibold py-2 px-3 rounded-full hover:bg-[#25D1D1] hover:text-white transition cursor-pointer"
-          >
-            Post your space
-          </button>
+          <PostSpaceButton userId={userId} />
         </div>
         <div
           onClick={toggleOpen}

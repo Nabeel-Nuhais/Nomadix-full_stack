@@ -8,6 +8,7 @@ import { AuthProvider } from "@/context/AuthContext";
 
 import RegisterModal from "@/components/modals/RegisterModal";
 import LoginModal from "@/components/modals/LoginModal";
+import PostSpaceModal from "@/components/modals/PostSpaceModal";
 
 export const metadata = {
   title: "Nomadix",
@@ -33,6 +34,7 @@ export default function RootLayout({
           <Navbar />
           <RegisterModal />
           <LoginModal />
+          <PostSpaceModal />
           <div className="pt-[82px] flex-grow">{children}</div>
         </body>
       </html>

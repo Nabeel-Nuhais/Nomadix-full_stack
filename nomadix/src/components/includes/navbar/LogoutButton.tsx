@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { resetAuthCookies } from "@/lib/actions";
 import { useAuth } from "@/context/AuthContext"; // Import Auth Context
-import MenuItem from "../includes/navbar/MenuItem";
+import MenuItem from "../navbar/MenuItem";
 import toast from "react-hot-toast";
 
 const LogoutButton: React.FC = () => {

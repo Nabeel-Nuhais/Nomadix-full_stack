@@ -2,20 +2,28 @@
 
 import { useRouter } from "next/navigation";
 import { resetAuthCookies } from "@/lib/actions";
-import { useAuth } from "@/context/AuthContext"; // Import Auth Context
+import { useAuth } from "@/context/AuthContext";
 import MenuItem from "../navbar/MenuItem";
 import toast from "react-hot-toast";
 
-const LogoutButton: React.FC = () => {
+interface LogoutButtonProps {
+  onLogout?: () => void;
+}
+
+const LogoutButton: React.FC<LogoutButtonProps> = ({ onLogout }) => {
   const router = useRouter();
-  const { refreshUser } = useAuth(); // Get refreshUser function from context
+  const { refreshUser } = useAuth();
 
   const submitLogout = async () => {
-    resetAuthCookies(); // Clear cookies/session
+    resetAuthCookies();
     toast.success("Logged out successfully!");
 
-    await refreshUser(); // Refresh user state
+    await refreshUser();
     router.push("/");
+
+    if (onLogout) {
+      onLogout();
+    }
   };
 
   return <MenuItem label="Log out" onClick={submitLogout} />;

@@ -2,7 +2,8 @@
 
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../../general/Avatar";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import MenuItem from "./MenuItem";
 import { motion, AnimatePresence } from "framer-motion";
 import useRegisterModal from "@/hooks/useRegisterModal";
@@ -16,6 +17,8 @@ interface UserMenuProps {
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ userId }) => {
+  const router = useRouter();
+  const pathname = usePathname();
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +26,14 @@ const UserMenu: React.FC<UserMenuProps> = ({ userId }) => {
   const toggleOpen = useCallback(() => {
     setIsOpen((prev) => !prev);
   }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [userId])
 
   return (
     <div className="relative">
@@ -58,17 +69,31 @@ const UserMenu: React.FC<UserMenuProps> = ({ userId }) => {
                   <MenuItem onClick={() => {}} label="My trips" />
                   <MenuItem onClick={() => {}} label="My favorites" />
                   <MenuItem onClick={() => {}} label="My reservation" />
-                  <MenuItem onClick={() => {}} label="My properties" />
                   <MenuItem onClick={() => {}} label="Post my space" />
                   <hr />
                   <MenuItem onClick={() => {}} label="Logout" />
                 </> */}
               {userId ? (
-                <LogoutButton />
+                <>
+                  <MenuItem
+                    onClick={() => {
+                      router.push("/myproperties");
+                    }}
+                    label="My properties"
+                  />
+                  <MenuItem
+                    onClick={() => {
+                      router.push("/myreservation");
+                    }}
+                    label="My reservations"
+                  />
+                  <hr className="border border-solid border-gray-100" />
+                  <LogoutButton onLogout={() => setIsOpen(false)} />
+                </>
               ) : (
                 <>
-                  <MenuItem onClick={loginModal.onOpen} label="Login" />
-                  <MenuItem onClick={registerModal.onOpen} label="Sign up" />
+                  <MenuItem onClick={() => {loginModal.onOpen(); setIsOpen(false)}} label="Login" />
+                  <MenuItem onClick={() => {registerModal.onOpen(); setIsOpen(false)}} label="Sign up" />
                 </>
               )}
             </div>

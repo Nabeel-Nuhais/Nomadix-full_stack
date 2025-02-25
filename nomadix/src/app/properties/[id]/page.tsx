@@ -3,7 +3,12 @@ import Container from "@/components/general/Container";
 import Image from "next/image";
 import apiService from "@/services/apiService";
 
+import { getUserId } from "@/lib/actions";
+import Link from "next/link";
+
 const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
+  const { id } = params;
+  const userId = await getUserId();
   const property = await apiService.get(`/api/properties/${params.id}`);
   return (
     <>
@@ -29,7 +34,10 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
 
               <hr className="border border-solid border-[#d5d5d5]" />
 
-              <div className="py-6 flex items-center space-x-4">
+              <Link
+                href={`/landlords/${property.landlord.id}`}
+                className="py-6 flex items-center space-x-4"
+              >
                 {property.landlord.avatar_url && (
                   <div className="w-[30px]">
                     <Image
@@ -45,7 +53,7 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
                 <p>
                   <strong>{property.landlord.name}</strong> is your host
                 </p>
-              </div>
+              </Link>
 
               <hr className="border border-solid border-[#d5d5d5]" />
 
@@ -53,7 +61,7 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
                 {property.description}
               </p>
             </div>
-            <ReservationSidebar property={property} />
+            <ReservationSidebar userId={userId} property={property} />
           </div>
         </main>
       </Container>

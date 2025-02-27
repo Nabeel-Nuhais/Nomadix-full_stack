@@ -83,9 +83,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ userId }) => {
                   />
                   <MenuItem
                     onClick={() => {
-                      router.push("/myreservation");
+                      router.push("/myreservations");
                     }}
                     label="My reservations"
+                  />
+                  <MenuItem
+                    onClick={() => {
+                      router.push("/myfavorites");
+                    }}
+                    label="My favorites"
                   />
                   <hr className="border border-solid border-gray-100" />
                   <LogoutButton onLogout={() => setIsOpen(false)} />

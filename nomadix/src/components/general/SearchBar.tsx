@@ -1,9 +1,12 @@
 "use client";
 
 import Image from "next/image";
+import useSearchModal from "@/hooks/useSearchModal";
 const SearchBar = () => {
+  const searchModal = useSearchModal();
   return (
     <div
+      onClick={() => {searchModal.onOpen('location')}}
       style={{ border: "1px solid #ddd" }}
       className="w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition"
     >

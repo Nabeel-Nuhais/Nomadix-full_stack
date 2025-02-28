@@ -80,7 +80,7 @@ const PostSpaceModal = () => {
         if (isSuccess) {
           toast.success("Property posted successfully!");
           postSpaceModal.onClose();
-          router.push("/");
+          router.push("/?added=true");
         } else {
           toast.error("Failed to post property. Please try again.");
         }

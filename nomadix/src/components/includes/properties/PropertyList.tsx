@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import PropertyListitem from "./PropertyListitem";
 import apiService from "@/services/apiService";
 import toast from "react-hot-toast";
+import useSearchModal from "@/hooks/useSearchModal";
+import { format } from "date-fns";
+import { useSearchParams } from "next/navigation";
 
 export type PropertyType = {
   id: string;
@@ -22,6 +25,15 @@ const PropertyList: React.FC<PropertyListProps> = ({
   landlord_id,
   favorites,
 }) => {
+  const params = useSearchParams()
+  const searchModal = useSearchModal();
+  const country = searchModal.query.country
+  const numGuests = searchModal.query.guests
+  const numBathrooms = searchModal.query.bathrooms
+  const numBedrooms = searchModal.query.bedrooms
+  const checkinDate = searchModal.query.checkIn
+  const checkoutDate = searchModal.query.checkOut
+  const category = searchModal.query.category
   const [properties, setProperties] = useState<PropertyType[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -31,10 +43,10 @@ const PropertyList: React.FC<PropertyListProps> = ({
         property.is_favorite = is_favorite;
 
         if (is_favorite) {
-          toast.success("Added to favorites")
+          toast.success("Added to favorites");
           console.log("property added to favorited");
         } else {
-          toast.success("Removed from favorites")
+          toast.success("Removed from favorites");
           console.log("removed from list");
         }
       }
@@ -52,6 +64,44 @@ const PropertyList: React.FC<PropertyListProps> = ({
       url += `?landlord_id=${landlord_id}`;
     } else if (favorites) {
       url += "?is_favorites=true";
+    } else {
+      let urlQuery = "";
+
+      if (country) {
+        urlQuery += '&country=' + country
+      }
+
+      if (numGuests) {
+        urlQuery += '&numGuests=' + numGuests
+      }
+
+      if (numBathrooms) {
+        urlQuery += '&numBathrooms=' + numBathrooms
+      }
+
+      if (numBedrooms) {
+        urlQuery += '&numBedrooms=' + numBedrooms
+      }
+
+      if (category) {
+        urlQuery += '&category=' + category
+      }
+
+      if (checkinDate) {
+        urlQuery += '&checkin=' + format(checkinDate, 'yyyy-MM-dd')
+      }
+
+      if (checkoutDate) {
+        urlQuery += '&checkout=' + format(checkoutDate, 'yyyy-MM-dd')
+      }
+
+      if (urlQuery.length) {
+        console.log("querry:", urlQuery)
+
+        urlQuery = '?' + urlQuery.substring(1)
+
+        url += urlQuery
+      }
     }
 
     try {
@@ -76,7 +126,7 @@ const PropertyList: React.FC<PropertyListProps> = ({
 
   useEffect(() => {
     getProperties();
-  }, []);
+  }, [category, searchModal.query, params]);
 
   return (
     <>

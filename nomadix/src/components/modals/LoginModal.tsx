@@ -34,7 +34,7 @@ const LoginModal = () => {
     const formData = { email, password };
 
     try {
-      const response = await apiService.postWitoutToken(
+      const response = await apiService.postWithoutToken(
         "/api/auth/login/",
         JSON.stringify(formData)
       );

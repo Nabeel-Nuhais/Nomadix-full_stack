@@ -1,4 +1,5 @@
 import { getAccessToken } from "@/lib/actions";
+import toast from "react-hot-toast";
 
 const apiService = {
   get: async function (url: string): Promise<any> {
@@ -15,10 +16,15 @@ const apiService = {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((response) => response.json())
+        .then(async (response) => {
+          if (response.status === 401) {
+            toast.error("Unauthorized. Please log in again.");
+            throw new Error("Unauthorized. Please log in again.");
+          }
+          return response.json();
+        })
         .then((json) => {
           console.log("Response:", json);
-
           resolve(json);
         })
         .catch((error) => {
@@ -40,10 +46,15 @@ const apiService = {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((response) => response.json())
+        .then(async (response) => {
+          if (response.status === 401) {
+            toast.error("Unauthorized. Please log in again.");
+            throw new Error("Unauthorized. Please log in again.");
+          }
+          return response.json();
+        })
         .then((json) => {
           console.log("Response:", json);
-
           resolve(json);
         })
         .catch((error) => {
@@ -52,7 +63,7 @@ const apiService = {
     });
   },
 
-  postWitoutToken: async function (url: string, data: any): Promise<any> {
+  postWithoutToken: async function (url: string, data: any): Promise<any> {
     console.log("post", url);
 
     return new Promise((resolve, reject) => {
@@ -64,10 +75,15 @@ const apiService = {
           "Content-Type": "application/json",
         },
       })
-        .then((response) => response.json())
+        .then(async (response) => {
+          if (response.status === 401) {
+            toast.error("Unauthorized. Please log in again.");
+            throw new Error("Unauthorized. Please log in again.");
+          }
+          return response.json();
+        })
         .then((json) => {
           console.log("Response:", json);
-
           resolve(json);
         })
         .catch((error) => {

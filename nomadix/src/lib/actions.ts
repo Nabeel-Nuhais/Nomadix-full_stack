@@ -1,6 +1,47 @@
 "use server";
 
 import { cookies } from "next/headers";
+import toast from "react-hot-toast";
+
+export async function handleRefresh() {
+  console.log("HandleRefresh");
+
+  const refreshToken = await getRefreshToken();
+  const cookieStore = await cookies(); // await the promise first
+
+  const token = await fetch("http://localhost:8000/api/auth/token/refresh/", {
+    method: "POST",
+    body: JSON.stringify({
+      refresh: refreshToken,
+    }),
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log("Response - Refresh:", json);
+
+      if (json.access) {
+        cookieStore.set("session_userid", json.access, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production",
+          maxAge: 60 * 60 * 24 * 7,
+          path: "/",
+        });
+
+        return json.access;
+      } else {
+        resetAuthCookies();
+      }
+    })
+    .catch((error) => {
+      toast.error("error");
+
+      resetAuthCookies();
+    });
+}
 
 export async function handleLogin(
   userId: string,
@@ -49,5 +90,15 @@ export async function getUserId() {
 export async function getAccessToken() {
   let accessToken = (await cookies()).get("session_access_token")?.value;
 
+  if (!accessToken) {
+    accessToken = await handleRefresh() ?? "";
+  }
+
   return accessToken;
+}
+
+export async function getRefreshToken() {
+  let refreshToken = (await cookies()).get("session_refresh_token")?.value;
+
+  return refreshToken;
 }

@@ -38,7 +38,7 @@ const RegisterModal = () => {
     const formData = { email, password1, password2 };
 
     try {
-      const response = await apiService.postWitoutToken(
+      const response = await apiService.postWithoutToken(
         "/api/auth/register/",
         JSON.stringify(formData)
       );

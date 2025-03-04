@@ -7,7 +7,7 @@ import { differenceInDays, eachDayOfInterval, format } from "date-fns";
 import DatePicker from "@/components/general/DatePicker";
 import apiService from "@/services/apiService";
 import useLoginModal from "@/hooks/useLoginModal";
-import toast from "react-hot-toast";
+import {toast} from "react-hot-toast";
 
 const initialDateRange = {
   startDate: new Date(),

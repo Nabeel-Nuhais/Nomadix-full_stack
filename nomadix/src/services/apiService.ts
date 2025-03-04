@@ -1,5 +1,5 @@
 import { getAccessToken } from "@/lib/actions";
-import toast from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 
 const apiService = {
   get: async function (url: string): Promise<any> {
@@ -18,7 +18,7 @@ const apiService = {
       })
         .then(async (response) => {
           if (response.status === 401) {
-            toast.error("Unauthorized. Please log in again.");
+            // toast.error("Unauthorized. Please log in again.");
             throw new Error("Unauthorized. Please log in again.");
           }
           return response.json();
@@ -48,7 +48,7 @@ const apiService = {
       })
         .then(async (response) => {
           if (response.status === 401) {
-            toast.error("Unauthorized. Please log in again.");
+            // toast.error("Unauthorized. Please log in again.");
             throw new Error("Unauthorized. Please log in again.");
           }
           return response.json();
@@ -77,7 +77,7 @@ const apiService = {
       })
         .then(async (response) => {
           if (response.status === 401) {
-            toast.error("Unauthorized. Please log in again.");
+            // toast.error("Unauthorized. Please log in again.");
             throw new Error("Unauthorized. Please log in again.");
           }
           return response.json();

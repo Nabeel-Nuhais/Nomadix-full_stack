@@ -1,7 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
-import toast from "react-hot-toast";
+// import { toast } from "react-hot-toast";
 
 export async function handleRefresh() {
   console.log("HandleRefresh");
@@ -37,8 +37,7 @@ export async function handleRefresh() {
       }
     })
     .catch((error) => {
-      toast.error("error");
-
+      // toast.error("An error occurred");
       resetAuthCookies();
     });
 }
@@ -91,7 +90,7 @@ export async function getAccessToken() {
   let accessToken = (await cookies()).get("session_access_token")?.value;
 
   if (!accessToken) {
-    accessToken = await handleRefresh() ?? "";
+    accessToken = (await handleRefresh()) ?? "";
   }
 
   return accessToken;

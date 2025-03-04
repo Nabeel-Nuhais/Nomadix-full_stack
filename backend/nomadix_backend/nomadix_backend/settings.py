@@ -89,7 +89,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'nomadix_backend.middleware.RequestLoggerMiddleware',
 ]
 
 ROOT_URLCONF = 'nomadix_backend.urls'

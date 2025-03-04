@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { resetAuthCookies } from "@/lib/actions";
 import { useAuth } from "@/context/AuthContext";
 import MenuItem from "../navbar/MenuItem";
-import toast from "react-hot-toast";
+import {toast} from "react-hot-toast";
 
 interface LogoutButtonProps {
   onLogout?: () => void;

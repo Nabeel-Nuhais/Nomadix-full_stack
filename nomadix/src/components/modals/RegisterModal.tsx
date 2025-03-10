@@ -39,7 +39,7 @@ const RegisterModal = () => {
 
     try {
       const response = await apiService.postWithoutToken(
-        "/api/auth/register/",
+        "/api/v1/auth/register/",
         JSON.stringify(formData)
       );
 

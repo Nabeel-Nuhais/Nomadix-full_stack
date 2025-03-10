@@ -35,7 +35,7 @@ const LoginModal = () => {
 
     try {
       const response = await apiService.postWithoutToken(
-        "/api/auth/login/",
+        "/api/v1/auth/login/",
         JSON.stringify(formData)
       );
 

@@ -17,7 +17,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({
     e.stopPropagation();
 
     const response = await apiService.post(
-      `/api/properties/${id}/toggle_favorite/`,
+      `/api/v1/properties/${id}/toggle_favorite/`,
       {}
     );
 

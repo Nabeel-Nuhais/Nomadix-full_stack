@@ -71,7 +71,7 @@ const PostSpaceModal = () => {
 
       try {
         const response = await apiService.post(
-          "/api/properties/create/",
+          "/api/v1/properties/create/",
           formData
         );
         console.log("API Response:", response);

@@ -10,7 +10,7 @@ export async function handleRefresh() {
   if (!refreshToken) return;
 
   try {
-    const response = await fetch("http://localhost:8000/api/auth/token/refresh/", {
+    const response = await fetch("http://localhost:8000/api/v1/auth/token/refresh/", {
       method: "POST",
       body: JSON.stringify({ refresh: refreshToken }),
       headers: {

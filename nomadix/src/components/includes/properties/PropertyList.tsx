@@ -58,7 +58,7 @@ const PropertyList: React.FC<PropertyListProps> = ({
   };
 
   const getProperties = async () => {
-    let url = "/api/properties/";
+    let url = "/api/v1/properties/";
 
     if (landlord_id) {
       url += `?landlord_id=${landlord_id}`;

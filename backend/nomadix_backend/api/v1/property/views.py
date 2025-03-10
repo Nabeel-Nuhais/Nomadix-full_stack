@@ -6,7 +6,7 @@ from rest_framework_simplejwt.tokens import AccessToken
 from property.forms import PropertyForm
 
 from property.models import Property, Reservation
-from .serializers import PropertiesListSerializer, PropertiesDetailSerializer, ReservationsListSerializer
+from api.v1.property.serializers import PropertiesListSerializer, PropertiesDetailSerializer, ReservationsListSerializer
 from useraccount.models import User
 
 

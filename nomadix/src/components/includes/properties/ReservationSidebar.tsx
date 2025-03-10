@@ -83,7 +83,7 @@ const ReservationSidebar: React.FC<ReservationSidebarProps> = ({
       formData.append("total_price", totalPrice.toString());
 
       const response = await apiService.post(
-        `/api/properties/${property.id}/book/`,
+        `/api/v1/properties/${property.id}/book/`,
         formData
       );
 
@@ -120,7 +120,7 @@ const ReservationSidebar: React.FC<ReservationSidebarProps> = ({
 
   const getReservations = async () => {
     const reservations = await apiService.get(
-      `/api/properties/${property.id}/reservations/`
+      `/api/v1/properties/${property.id}/reservations/`
     );
 
     let dates: Date[] = [];

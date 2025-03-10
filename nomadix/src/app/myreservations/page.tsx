@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 const MyReservationPage = async () => {
-  const reservations = await apiService.get("/api/auth/myreservations/");
+  const reservations = await apiService.get("/api/v1/auth/myreservations/");
 
   return (
     <Container>

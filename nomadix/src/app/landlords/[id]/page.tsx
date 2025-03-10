@@ -22,7 +22,7 @@ const LandlordPage = () => {
 
     const fetchLandlord = async () => {
       try {
-        const data = await apiService.get(`/api/auth/${landlordId}`);
+        const data = await apiService.get(`/api/v1/auth/${landlordId}`);
         setLandlord(data);
       } catch (error) {
         console.error("Failed to load landlord:", error);

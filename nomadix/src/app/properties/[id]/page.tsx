@@ -9,7 +9,7 @@ import Link from "next/link";
 const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
   const { id } = await Promise.resolve(params);
   const userId = await getUserId();
-  const property = await apiService.get(`/api/properties/${id}`);
+  const property = await apiService.get(`/api/v1/properties/${id}`);
   return (
     <>
       <Container>

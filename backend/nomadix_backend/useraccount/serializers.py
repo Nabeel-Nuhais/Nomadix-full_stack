@@ -1,13 +1,13 @@
-from rest_framework import serializers
+# from rest_framework import serializers
 
-from .models import User
+# from .models import User
 
 
-class UserDetailSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = (
-            'id',
-            'name',
-            'avatar_url',
-        )
+# class UserDetailSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = User
+#         fields = (
+#             'id',
+#             'name',
+#             'avatar_url',
+#         )

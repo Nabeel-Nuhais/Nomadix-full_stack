@@ -9,7 +9,7 @@ const Spotlight = ({ onArrowClick }: { onArrowClick: () => void }) => {
       style={{
         height: "calc(100vh - 82px)",
         margin: "auto 0 0",
-        backgroundImage: "url('assets/images/home.jpg')",
+        backgroundImage: "url('/assets/images/home.jpg')",
         backgroundSize: "900px",
         backgroundPosition: "right bottom",
         backgroundRepeat: "no-repeat",

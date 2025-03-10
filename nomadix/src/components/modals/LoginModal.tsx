@@ -9,8 +9,7 @@ import Heading from "../general/Heading";
 import Input from "../general/Input";
 import apiService from "@/services/apiService";
 import { handleLogin } from "@/lib/actions";
-import {toast} from "react-hot-toast";
-
+import toast from "react-hot-toast";
 import { useAuth } from "@/context/AuthContext";
 
 const LoginModal = () => {
@@ -20,9 +19,11 @@ const LoginModal = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
-    {}
-  );
+  const [errors, setErrors] = useState<{
+    email?: string;
+    password?: string;
+    non_field_errors?: string[];
+  }>({});
   const [isLoading, setIsLoading] = useState(false);
 
   const { refreshUser } = useAuth(); // for user menu correct time updation
@@ -30,7 +31,6 @@ const LoginModal = () => {
   const submitLogin = async () => {
     setIsLoading(true);
     setErrors({});
-
     const formData = { email, password };
 
     try {
@@ -53,9 +53,20 @@ const LoginModal = () => {
       }
     } catch (error: any) {
       if (error.response?.data) {
-        setErrors(error.response.data);
+        setErrors({
+          email: error.response.data.email?.[0] || "",
+          password: error.response.data.password?.[0] || "",
+          non_field_errors: error.response.data.non_field_errors || [],
+        });
+
+        if (error.response.data.non_field_errors) {
+          toast.error(error.response.data.non_field_errors[0]); // Show general error
+        }
+      } else {
+        toast.error("Invalid email or password.");
       }
-      toast.error("Invalid email or password.");
+
+      setPassword(""); // Clear password field after failure
     } finally {
       setIsLoading(false);
     }
@@ -67,7 +78,11 @@ const LoginModal = () => {
     field: keyof typeof errors
   ) => {
     setter(value);
-    setErrors((prev) => ({ ...prev, [field]: "" }));
+    setErrors((prev) => {
+      const newErrors = { ...prev };
+      delete newErrors[field];
+      return newErrors;
+    });
   };
 
   const bodyContent = (
@@ -100,6 +115,14 @@ const LoginModal = () => {
       {errors.password && (
         <p className="text-red-500 text-sm mt-1">{errors.password}</p>
       )}
+
+      {/* shows non-field errors */}
+      {errors.non_field_errors &&
+        errors.non_field_errors.map((err, i) => (
+          <p key={i} className="text-red-500 text-sm">
+            {err}
+          </p>
+        ))}
     </div>
   );
 

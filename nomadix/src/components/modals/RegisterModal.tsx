@@ -9,7 +9,7 @@ import Heading from "../general/Heading";
 import Input from "../general/Input";
 import Button from "../general/Button";
 import apiService from "@/services/apiService";
-import {toast} from "react-hot-toast";
+import toast from "react-hot-toast";
 import { handleLogin } from "@/lib/actions";
 import { useAuth } from "@/context/AuthContext";
 

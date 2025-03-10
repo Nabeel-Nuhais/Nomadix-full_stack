@@ -7,9 +7,9 @@ import { getUserId } from "@/lib/actions";
 import Link from "next/link";
 
 const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+  const { id } = await Promise.resolve(params);
   const userId = await getUserId();
-  const property = await apiService.get(`/api/properties/${params.id}`);
+  const property = await apiService.get(`/api/properties/${id}`);
   return (
     <>
       <Container>

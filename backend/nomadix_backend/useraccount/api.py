@@ -4,7 +4,7 @@ from django.http import JsonResponse, Http404
 
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 
-from property.serializers import ReservationsListSerializer
+from api.v1.property.serializers import ReservationsListSerializer
 
 
 @api_view(['GET'])

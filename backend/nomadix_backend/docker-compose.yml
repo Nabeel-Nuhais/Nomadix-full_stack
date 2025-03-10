@@ -9,7 +9,7 @@ services:
     volumes:
       - ./nomadix_backend/:/usr/src/nomadix_backend/
     ports:
-      - 8014:8000
+      - 8000:8000
     env_file:
       - ./.env.dev
     depends_on:

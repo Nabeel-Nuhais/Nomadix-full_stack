@@ -15,7 +15,7 @@ import Button from "../general/Button";
 import Input from "@/components/general/Input";
 import SelectCountry, { SelectCountryValue } from "../general/SelectCountry";
 import apiService from "@/services/apiService";
-import {toast} from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const PostSpaceModal = () => {
   const [currentStep, setCurrentStep] = useState(1);

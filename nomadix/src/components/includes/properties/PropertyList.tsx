@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import PropertyListitem from "./PropertyListitem";
 import apiService from "@/services/apiService";
-import {toast} from "react-hot-toast";
 import useSearchModal from "@/hooks/useSearchModal";
 import { format } from "date-fns";
 import { useSearchParams } from "next/navigation";
+import toast from "react-hot-toast";
 
 export type PropertyType = {
   id: string;

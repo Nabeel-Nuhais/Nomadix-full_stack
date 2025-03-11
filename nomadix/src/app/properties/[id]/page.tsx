@@ -18,6 +18,7 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
             <Image
               src={property.image_url}
               fill
+              sizes=""
               alt="forest"
               className="object-cover w-full h-full"
             />

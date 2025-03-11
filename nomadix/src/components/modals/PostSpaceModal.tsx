@@ -189,6 +189,7 @@ const PostSpaceModal = () => {
                 <div className="w-[200px] h-[150px] relative">
                   <Image
                     fill
+                    sizes=""
                     alt="uploaded Image"
                     src={URL.createObjectURL(dataImage)}
                     className="w-full h-full object-cover rounded-xl"

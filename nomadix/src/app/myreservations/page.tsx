@@ -27,6 +27,7 @@ const MyReservationPage = async () => {
                     <Image
                       src={reservation.property.image_url}
                       fill
+                      sizes=""
                       className="hover:scale-110 object-cover transition h-full w-full"
                       alt={reservation.property.title}
                     />

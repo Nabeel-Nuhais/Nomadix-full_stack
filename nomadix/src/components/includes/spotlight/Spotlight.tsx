@@ -9,9 +9,9 @@ const Spotlight = ({ onArrowClick }: { onArrowClick: () => void }) => {
       style={{
         height: "calc(100vh - 82px)",
         margin: "auto 0 0",
-        backgroundImage: "url('/assets/images/home.jpg')",
-        backgroundSize: "900px",
-        backgroundPosition: "right bottom",
+        backgroundImage: "url('/assets/images/cyan-spotlight.png')",
+        backgroundSize: "650px",
+        backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
       }}
       className="pt-6"

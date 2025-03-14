@@ -89,7 +89,7 @@ const ReservationSidebar: React.FC<ReservationSidebarProps> = ({
 
       if (response.success) {
         toast.success("Booking successful!");
-        getReservations(); 
+        getReservations();
       } else {
         throw new Error(
           response.message || "Booking failed. Please try again."
@@ -162,13 +162,14 @@ const ReservationSidebar: React.FC<ReservationSidebarProps> = ({
   return (
     <>
       <div className="p-6 col-span-2 rounded-xl border border-solid border-[#d5d5d5] shadow-md">
-        <h2 className="mb-5 text-lg">${property.price_per_night}</h2>
-
-        <DatePicker
-          bookedDates={bookedDates}
-          value={dateRange}
-          onChange={(value) => _setDateRange(value.selection)}
-        />
+        <h2 className="mb-5 text-lg">Price per night ${property.price_per_night}</h2>
+        <div className="w-[100%] datepicker">
+          <DatePicker
+            bookedDates={bookedDates}
+            value={dateRange}
+            onChange={(value) => _setDateRange(value.selection)}
+          />
+        </div>
 
         <div className="mb-6 p-3 border border-solid border-[#d5d5d5] rounded-xl">
           <label htmlFor="" className="block font-medium text-sm mb-2">

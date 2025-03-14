@@ -51,7 +51,7 @@ const LandlordPage = () => {
             <div className="flex flex-col items-center p-6 rounded-xl border border-solid border-[#d5d5d5] shadow-md">
               <div className="w-[50px]">
                 <Image
-                  src={landlord.avatar_url}
+                  src={landlord.avatar_url || '/assets/icons/user.svg'}
                   alt={landlord.name || "Host"}
                   width={50}
                   height={50}

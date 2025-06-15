@@ -10,7 +10,7 @@ const Spotlight = ({ onArrowClick }: { onArrowClick: () => void }) => {
         height: "calc(100vh - 82px)",
         margin: "auto 0 0",
         backgroundImage: "url('/assets/images/cyan-spotlight.png')",
-        backgroundSize: "650px",
+        backgroundSize: "500px",
         backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
       }}

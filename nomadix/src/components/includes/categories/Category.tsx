@@ -37,7 +37,7 @@ const Category = () => {
       <div className="py-5 text-2xl font-semibold">
         <h3>Categories</h3>
       </div>
-      <div className="cursor-pointer pb-6 flex items-center space-x-12">
+      <div className="cursor-pointer pb-6 flex items-center sm:space-x-12 space-x-8">
         {categories.map((item) => (
           <div
             key={item.value}

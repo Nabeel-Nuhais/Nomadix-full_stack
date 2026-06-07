@@ -20,7 +20,7 @@ hyperlink==21.0.0
 idna==3.10
 incremental==24.7.2
 oauthlib==3.2.2
-pillow==10.2.0
+Pillow==11.2.1
 psycopg2-binary==2.9.9
 pyasn1==0.6.1
 pyasn1_modules==0.4.1

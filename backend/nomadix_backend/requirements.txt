@@ -41,3 +41,5 @@ wheel==0.43.0
 zope.interface==7.2
 psycopg[binary]==3.2.9
 gunicorn==26.0.0
+cloudinary
+django-cloudinary-storage

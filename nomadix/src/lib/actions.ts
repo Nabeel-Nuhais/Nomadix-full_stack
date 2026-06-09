@@ -42,7 +42,11 @@ export async function handleLogin(
   await setAuthCookies(accessToken, refreshToken, userId);
 }
 
-async function setAuthCookies(accessToken, refreshToken = "", userId = "") {
+async function setAuthCookies(
+  accessToken: string,
+  refreshToken: string = "",
+  userId: string = ""
+) {
   const cookieStore = await cookies();
 
   cookieStore.set("session_userid", userId, {

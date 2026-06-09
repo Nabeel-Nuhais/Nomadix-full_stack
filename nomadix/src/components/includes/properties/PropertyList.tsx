@@ -25,7 +25,6 @@ const PropertyList: React.FC<PropertyListProps> = ({
   landlord_id,
   favorites,
 }) => {
-  const params = useSearchParams()
   const searchModal = useSearchModal();
   const country = searchModal.query.country
   const numGuests = searchModal.query.guests
@@ -126,7 +125,7 @@ const PropertyList: React.FC<PropertyListProps> = ({
 
   useEffect(() => {
     getProperties();
-  }, [category, searchModal.query, params]);
+  }, [category, searchModal.query]);
 
   return (
     <>

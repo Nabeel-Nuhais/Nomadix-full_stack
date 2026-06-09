@@ -8,7 +8,7 @@ import { useState } from "react";
 import { Range } from "react-date-range";
 import DatePicker from "../general/DatePicker";
 import Button from "../general/Button";
-import Input from "@/components/general/input";
+import Input from "@/components/general/inputt";
 
 const initialDateRange = {
   startDate: new Date(),

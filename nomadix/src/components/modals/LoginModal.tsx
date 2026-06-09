@@ -6,7 +6,7 @@ import useRegisterModal from "@/hooks/useRegisterModal";
 import useLoginModal from "@/hooks/useLoginModal";
 import Modal from "./Modal";
 import Heading from "../general/Heading";
-import Input from "../general/input";
+import Input from "../general/inputt";
 import apiService from "@/services/apiService";
 import { handleLogin } from "@/lib/actions";
 import toast from "react-hot-toast";

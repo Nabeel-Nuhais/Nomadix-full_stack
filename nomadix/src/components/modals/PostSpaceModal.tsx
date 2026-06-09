@@ -12,7 +12,7 @@ import LoginModal from "./LoginModal";
 import Heading from "../general/Heading";
 import Categories from "../includes/categories/Categories";
 import Button from "../general/Button";
-import Input from "@/components/general/inputt";
+import Input from "@/components/general/CustomInput";
 import SelectCountry, { SelectCountryValue } from "../general/SelectCountry";
 import apiService from "@/services/apiService";
 import toast from "react-hot-toast";

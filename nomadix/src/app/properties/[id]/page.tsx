@@ -6,8 +6,12 @@ import apiService from "@/services/apiService";
 import { getUserId } from "@/lib/actions";
 import Link from "next/link";
 
-const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
-  const { id } = await Promise.resolve(params);
+const PropertyDetailPage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
+  const { id } = await params;
   const userId = await getUserId();
   const property = await apiService.get(`/api/v1/properties/${id}`);
   return (
@@ -52,7 +56,8 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
                 )}
 
                 <p>
-                  <strong>{property.landlord.name || "Host name"}</strong> is your host
+                  <strong>{property.landlord.name || "Host name"}</strong> is
+                  your host
                 </p>
               </Link>
 

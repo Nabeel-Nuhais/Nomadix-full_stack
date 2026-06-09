@@ -1,23 +1,27 @@
-import Button from "@/components/general/Button";
 import Container from "@/components/general/Container";
 import Image from "next/image";
-import apiService from "@/services/apiService";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-const MyReservationPage = async () => {
-  const reservations = await apiService.get("/api/v1/auth/myreservations/");
+export default async function MyReservationPage() {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_HOST}/api/v1/auth/myreservations/`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  const data = await res.json();
 
   return (
     <Container>
       <div className="mt-10">
         <h1 className="mb-4 text-2xl font-semibold">My Reservations</h1>
 
-        {reservations.length === 0 ? (
+        {data.length === 0 ? (
           <p className="text-gray-500">You have no reservations yet.</p>
         ) : (
           <div className="space-y-4">
-            {reservations.map((reservation: any) => (
+            {data.map((reservation: any) => (
               <div
                 key={reservation.id}
                 className="p-5 grid grid-cols-1 md:grid-cols-4 gap-4 shadow-md border border-solid border-[#f2f2f2] rounded-xl"
@@ -81,4 +85,3 @@ const MyReservationPage = async () => {
   );
 };
 
-export default MyReservationPage;
